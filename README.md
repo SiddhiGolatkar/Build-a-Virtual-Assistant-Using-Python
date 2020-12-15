@@ -1,8 +1,14 @@
 # Build-Google-Assistant-in-Python
 
-pip install SpeechRecognition
-pip install pyttsx3
-pip install PyAudio 
+**Install below packages**
+
+- pip install SpeechRecognition
+
+- pip install pyttsx3
+
+- pip install PyAudio 
+
+If you come across any issues regarding pyaudio or Text to speech module, please go through below solution. 
 
 error: failed building wheel for pyaudio
 
