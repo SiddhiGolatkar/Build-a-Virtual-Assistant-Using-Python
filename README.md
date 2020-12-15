@@ -2,11 +2,18 @@
 
 **Install below packages**
 
-- pip install SpeechRecognition
+- pip install SpeechRecognition - For the robot to listen to our voice/speech
 
-- pip install pyttsx3
+- pip install pyttsx3 - To speak out, or text to speech 
+
+- pip install pywhatkit - For advance control on browser 
+
+- pip install wikipedia - To get wikipedia data
+
+- pip install pyjokes - To get funny jokes 
 
 - pip install PyAudio 
+
 
 If you come across any issues regarding pyaudio or Text to speech module, please go through below solution. 
 
