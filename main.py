@@ -1,10 +1,10 @@
-
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
+import webbrowser
 
 
 listener = sr.Recognizer()
@@ -28,8 +28,15 @@ def take_command():
             command = command.lower()
             if 'alexa' in command:
                 command = command.replace('alexa', '')
-    except:
-        pass
+
+    except sr.UnknownValueError:
+        print('Sorry, I did not get that')
+        talk('Sorry, I did not get that')
+
+    except sr.RequestError:
+        print('Sorry, my speech service is down')
+        talk('Sorry, my speech service is down')
+
     return command
 
 
@@ -42,6 +49,20 @@ def run_alexa():
         talk('Playing' + song)
         print('Playing' + song)
         pywhatkit.playonyt(song)
+
+    elif 'search' in command:
+        search = command.replace('search', '')
+        url = 'https://google.com/search?q=' + search
+        webbrowser.get().open(url)
+        print('Here is what i found for ' + search)
+        talk('Here is what i found for ' + search)
+
+    elif 'map' in command:
+        location = command.replace('map', '')
+        url = 'https://google.nl/maps/place/' + location + '/&amp;'
+        webbrowser.get().open(url)
+        print('Here is the map of ' + location)
+        talk('Here is the map of ' + location)
 
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%m %p')
@@ -65,17 +86,18 @@ def run_alexa():
         print(joke)
         talk(joke)
 
+    elif 'who are you' in command:
+        talk('I am Alexa. Your 24 7 virtual assistant. if you are bored i can tell you a joke, i can play youtube videos for you, and blah blah and i am awesome.')
+
     elif 'thank you' in command:
         talk('Your welcome. Anything else you want me to do ?')
 
     elif 'good bye' in command:
         talk('GoodBye Smarty. See you later, Alligator.')
 
-    else:
-        talk('Sorry, i dint get you. Please come again.')
+    elif 'exit' in command:
+        exit()
 
 
 while True:     
     run_alexa()
-    
-    
