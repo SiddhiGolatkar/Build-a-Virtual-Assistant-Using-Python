@@ -1,3 +1,4 @@
+
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
@@ -28,14 +29,13 @@ def take_command():
             command = command.lower()
             if 'alexa' in command:
                 command = command.replace('alexa', '')
-
-    except sr.UnknownValueError:
-        print('Sorry, I did not get that')
-        talk('Sorry, I did not get that')
-
+        
     except sr.RequestError:
         print('Sorry, my speech service is down')
         talk('Sorry, my speech service is down')
+
+    except:
+        pass
 
     return command
 
@@ -98,6 +98,11 @@ def run_alexa():
     elif 'exit' in command:
         exit()
 
+    else:
+        print('Sorry, I did not get that')
+        talk('Sorry, I did not get that')
+
 
 while True:     
     run_alexa()
+
